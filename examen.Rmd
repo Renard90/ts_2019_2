@@ -69,9 +69,16 @@ data
 
 Load the dataset labeled as ITU_WB.csv that is located in the data folder and storage this dataset in a variable called itu. Then, you should describe the composition of the dataset. This description must contain the number of observations, variables and the type of each variable
 
-```{r}
+un total de 12 variables/columnas, las cuales son num(tipo int), Economy(tipo factor), Code(tipo factor), Region(tipo factor), Income.Group(tipo factor), year(tipo int), Internet.value(tipo num), Total.population(tipo int), "GDP..US.."(tipo num), "Life.Expectancy..Years."(tipo num),"GDP.per.capita.income" y "Fertility..Births.per.woman"(tipo num), con un total de 3735 obervaciones.
 
-datasets::
+
+```{r}
+itu <- read.csv("~/conexion a git/ts_2019_2/data/ITU_WB.csv")
+
+summary(itu)
+
+itu
+
 ```
 
 
