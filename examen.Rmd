@@ -87,7 +87,8 @@ itu
 Filter the itu dataset to retrieve only the observation from Mexico, grouped by year and in descending order selecting the "Internet value" column
 
 ```{r}
-
+itu_mex <- itu %>% filter(Economy == "Mexico") %>% group_by(year) %>% arrange(desc(Internet.value))
+itu_mex
 ```
 
 
@@ -96,7 +97,9 @@ Filter the itu dataset to retrieve only the observation from Mexico, grouped by 
  Create a new variable called itu_by_year grouping per "year" and "Income group" variables. Then, remove NAs observations. Later, using the function summarize() you should estimate the median of the Internet value variable and store it in a variable called "medianValue"
 
 ```{r}
-
+itu2.0<-na.omit(itu)
+#itu_by_year <- itu %>% group_by(drop_na(year, Income.group))
+itu_by_year
 ```
 
 
@@ -115,7 +118,9 @@ Create a new variable called itu_latin filtering per Region, selecting Latin Ame
 Then, using this dataset, create a plot visualizing the relationship between Internet value and GDP (US$) colored per Income group and faceting per Economy
 
 ```{r}
-
+itu
+itu_latin <- itu %>% filter(Region == "Latin America & Caribbean")
+itu_latin
 ```
 
 
@@ -126,6 +131,7 @@ Then, using this dataset, create a plot visualizing the relationship between Int
 Then, using this dataset, create a plot visualizing the relationship between Internet value and GDP (US$), colored per Income group. Furthermore, you should use a log scale in both axes ("x" and "y"). Finally, you should use the facet function in order to wrap by Region.
 
 ```{r}
+itu_2017 <- itu %>% filter(year == "2017")
 
 ```
 
