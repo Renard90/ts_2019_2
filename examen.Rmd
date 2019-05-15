@@ -98,8 +98,8 @@ itu_mex
 
 ```{r}
 itu2.0<-na.omit(itu)
-#itu_by_year <- itu %>% group_by(drop_na(year, Income.group))
-itu_by_year
+itu_by_year <- na.omit(itu) %>% group_by(year, Income.group)
+summarize(itu_by_year)
 ```
 
 
@@ -119,8 +119,11 @@ Then, using this dataset, create a plot visualizing the relationship between Int
 
 ```{r}
 itu
-itu_latin <- itu %>% filter(Region == "Latin America & Caribbean")
+itu_latin <- na.omit(itu) %>% filter(Region == "Latin America & Caribbean") %>% group_by(Income.group)
 itu_latin
+
+ggplot(itu_latin, aes(x = Internet.value, y = GDP..US.., color = Income.group)) +
+  geom_point() + facet_wrap(~Economy) + scale_y_log10() 
 ```
 
 
@@ -131,7 +134,10 @@ itu_latin
 Then, using this dataset, create a plot visualizing the relationship between Internet value and GDP (US$), colored per Income group. Furthermore, you should use a log scale in both axes ("x" and "y"). Finally, you should use the facet function in order to wrap by Region.
 
 ```{r}
-itu_2017 <- itu %>% filter(year == "2017")
+itu_2017 <- na.omit(itu) %>% filter (year == "2017")
+
+ggplot(itu_2017, aes(x = Internet.value, y = GDP..US.., color = Income.group)) +
+  geom_point() +  scale_x_log10() + scale_y_log10() + facet_wrap(~Region)
 
 ```
 
